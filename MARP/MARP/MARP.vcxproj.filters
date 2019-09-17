@@ -18,10 +18,10 @@
     <ClCompile Include="LoQueCuestaSumar.cpp">
       <Filter>Archivos de origen</Filter>
     </ClCompile>
-    <ClCompile Include="test.cpp">
+    <ClCompile Include="UnidadCuriosaDeMonitorizacion.cpp">
       <Filter>Archivos de origen</Filter>
     </ClCompile>
-    <ClCompile Include="UnidadCuriosaDeMonitorizacion.cpp">
+    <ClCompile Include="OrdenandoPacientes.cpp">
       <Filter>Archivos de origen</Filter>
     </ClCompile>
   </ItemGroup>

@@ -116,7 +116,7 @@
   </ItemDefinitionGroup>
   <ItemGroup>
     <ClCompile Include="LoQueCuestaSumar.cpp" />
-    <ClCompile Include="test.cpp" />
+    <ClCompile Include="OrdenandoPacientes.cpp" />
     <ClCompile Include="UnidadCuriosaDeMonitorizacion.cpp" />
   </ItemGroup>
   <ItemGroup>

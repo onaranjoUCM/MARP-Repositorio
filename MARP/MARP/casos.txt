@@ -1,5 +1,11 @@
-2
-1234 200
-9000 300
-5
-0
+9
+I Alberto 4000
+I Pepe 3000
+A
+I Rosa 2000
+I Laura 5000
+A
+I Sara 3000
+A
+A
+0

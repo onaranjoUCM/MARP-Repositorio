@@ -2,35 +2,16 @@ using namespace std;
 #include <iostream>
 #include <fstream>
 #include <queue>
-
+/*
 struct usuario {
-	int id;
-	int periodo;
-	int siguienteEntrega;
-
-	usuario(int i, int p, int s) {
-		id = i;
-		periodo = p;
-		siguienteEntrega = s;
-	};
+  int id;
+  int periodo;
+  int siguienteEntrega;
 };
 
-bool operator <(usuario const& a, usuario const& b) {
-  return a.siguienteEntrega < b.siguienteEntrega || 
-    (a.siguienteEntrega == b.siguienteEntrega && a.id < b.id);
-}
-
-void resolver(priority_queue<usuario, vector<usuario>, less<vector<usuario>::value_type>>& pq, int nEnvios) {
-  int contador = 0;
-
-  while (contador < nEnvios) {
-    usuario u = pq.top();
-    cout << u.id << "\n";
-    u.siguienteEntrega += u.periodo;
-    pq.pop();
-    pq.push(u);
-    contador++;
-  }
+bool operator>(usuario const& a, usuario const& b) {
+  return a.siguienteEntrega > b.siguienteEntrega || 
+    (a.siguienteEntrega == b.siguienteEntrega && a.id > b.id);
 }
 
 bool resuelveCaso() {
@@ -41,20 +22,29 @@ bool resuelveCaso() {
 		return false;
 
   // Llena la cola con los usuarios
-  priority_queue<usuario, vector<usuario>, less<vector<usuario>::value_type>> pq;
+  priority_queue<usuario, vector<usuario>, greater<usuario>> pq;
   for (int i = 0; i < n; i++) {
     int id;
     int periodo;
     cin >> id;
     cin >> periodo;
-    pq.push(usuario(id, periodo, 0));
+    pq.push({ id, periodo, periodo });
   }
 
+  // Lee el numero de envios
   int nEnvios;
   cin >> nEnvios;
 
   // Calcula y devuelve la solucion
-	resolver(pq, nEnvios);
+  while (nEnvios--) {
+    usuario u = pq.top();
+    cout << u.id << "\n";
+    u.siguienteEntrega += u.periodo;
+    pq.pop();
+    pq.push(u);
+  }
+  cout << "---" << "\n";
+
 	return true;
 }
 
@@ -66,7 +56,6 @@ int main() {
 #endif
 
 	while (resuelveCaso());
-	return 0;
   
 	// para dejar todo como estaba al principio
 #ifndef DOMJUDGE
@@ -74,4 +63,4 @@ int main() {
 	system("PAUSE");
 #endif
 	return 0;
-}
+}*/
