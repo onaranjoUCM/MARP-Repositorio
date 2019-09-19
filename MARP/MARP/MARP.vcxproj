@@ -117,7 +117,9 @@
   <ItemGroup>
     <ClCompile Include="LoQueCuestaSumar.cpp" />
     <ClCompile Include="OrdenandoPacientes.cpp" />
+    <ClCompile Include="ReinaDelSuper.cpp" />
     <ClCompile Include="UnidadCuriosaDeMonitorizacion.cpp" />
+    <ClCompile Include="VolandoDrones.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="PriorityQueue.h" />

@@ -3,7 +3,7 @@ using namespace std;
 #include <fstream>
 #include <queue>
 #include <string>
-
+/*
 struct paciente {
   string nombre;
   int prioridad;
@@ -62,4 +62,4 @@ bool resuelveCaso() {
   system("PAUSE");
 #endif
   return 0;
-}
+}*/
