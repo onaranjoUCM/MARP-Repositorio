@@ -2,7 +2,7 @@ using namespace std;
 #include <iostream>
 #include <fstream>
 #include <queue>
-
+/*
 bool resuelveCaso() {
 	if (!std::cin)
 		return false;
@@ -74,3 +74,4 @@ int main() {
 
 	return 0;
 }
+*/
