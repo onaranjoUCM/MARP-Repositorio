@@ -2,7 +2,7 @@ using namespace std;
 #include <iostream>
 #include <fstream>
 #include <queue>
-
+/*
 bool resuelveCaso() {
   int edadCentral;
   cin >> edadCentral;
@@ -67,4 +67,4 @@ int main() {
   system("PAUSE");
 #endif
   return 0;
-}
+}*/

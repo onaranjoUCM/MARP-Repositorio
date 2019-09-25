@@ -118,6 +118,7 @@
     <ClCompile Include="LoQueCuestaSumar.cpp" />
     <ClCompile Include="OrdenandoPacientes.cpp" />
     <ClCompile Include="PajarosEnVuelo.cpp" />
+    <ClCompile Include="PartiturasOrquesta.cpp" />
     <ClCompile Include="ReinaDelSuper.cpp" />
     <ClCompile Include="UnidadCuriosaDeMonitorizacion.cpp" />
     <ClCompile Include="VolandoDrones.cpp" />
