@@ -3,42 +3,54 @@ using namespace std;
 #include <iostream>
 #include <fstream>
 #include <queue>
+#include <cmath>
+/*
+struct grupo {
+  int id;
+  float musicos;
+  float atriles;
+};
+
+bool operator> (grupo const& a, grupo const& b) {
+  float ratioA = a.musicos / a.atriles;
+  float ratioB = b.musicos / b.atriles;
+  return ratioA < ratioB || (ratioA == ratioB && a.id < b.id);
+}
 
 bool resuelveCaso() {
   int p, n;
-  cin >> p;
+  cin >> p >> n;
 
   if (!cin)
     return false;
 
-  cin >> n;
-
-  // Creamos la cola de grupos con 1 atril
-  priority_queue<int> pq;
+  // Creamos la cola de grupos con 1 atril cada uno
+  priority_queue<grupo, vector<grupo>, greater<grupo>> pq;
   for (int i = 0; i < n; i++) {
-    int c;
+    float c;
     cin >> c;
-    pq.push(c);
+    pq.push({ i, c, 1.0 });
     p--;
   }
 
-  // Repartimos los atriles restantes a los grupos mas grandes
+  // Repartimos los atriles restantes a los grupos con peor ratio
   while (p--) {
-    // Eliminamos el grupo grande
-    int n = pq.top();
+    grupo g = pq.top();
     pq.pop();
-
-    // Reintroducimos dos grupos cada uno con la mitad del 
-    // tamaño del grupo original, con 1 atril cada uno
-    pq.push(n / 2);
-    if (n % 2) {
-      pq.push(n / 2 + 1);
-    } else {
-      pq.push(n / 2);
-    }
+    pq.push({ g.id, g.musicos, g.atriles + 1 });
   }
   
-  cout << pq.top() << "\n";
+  // Escribimos la solucion
+  grupo g = pq.top();
+  float r = g.musicos / g.atriles;
+
+  int mayorGrupo;
+  if (std::floor(r) == r)
+    mayorGrupo = r;
+  else {
+    mayorGrupo = r + 1;
+  }
+  cout << mayorGrupo << "\n";
 
   return true;
 }
@@ -57,4 +69,4 @@ int main() {
   #endif
 
   return 0;
-}
+}*/

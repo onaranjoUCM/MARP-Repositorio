@@ -2,15 +2,14 @@ using namespace std;
 #include <iostream>
 #include <fstream>
 #include <queue>
+#include <vector>
 /*
 bool resuelveCaso() {
-	if (!std::cin)
-		return false;
-
 	int n, a, b;
-	cin >> n;
-	cin >> a;
-	cin >> b;
+	cin >> n >> a >> b;
+
+  if (!std::cin)
+    return false;
 
 	// Rellena la cola de pilas de 9V
 	priority_queue<int> pilasGrandes;
@@ -28,9 +27,13 @@ bool resuelveCaso() {
 		pilasPequenas.push(carga);
 	}
 
-	// Mientras queden pilas salimos a volar
+  // Mientras haya pilas para ese sabado seguimos saliendo
 	while (!pilasGrandes.empty() && !pilasPequenas.empty()) {
 		int horasDeVuelo = 0;
+    vector<int> grandesPendientes;
+    vector<int> pequenasPendientes;
+
+    // Cargamos cada dron
 		for (int i = 0; i < n; i++) {
 			if (!pilasGrandes.empty() && !pilasPequenas.empty()) {
 				int pilaGrande = pilasGrandes.top();
@@ -39,18 +42,29 @@ bool resuelveCaso() {
 				pilasPequenas.pop();
 
 				// La pila grande ha durado mas
-				if (pilaGrande > pilaPequena) {
-					horasDeVuelo += pilaPequena;
-					pilasGrandes.push(pilaGrande - pilaPequena);
-				}
-				// La pila pequeña ha durado mas
-				else {
+        if (pilaGrande > pilaPequena) {
+          horasDeVuelo += pilaPequena;
+          //pilasGrandes.push(pilaGrande - pilaPequena);
+          grandesPendientes.push_back(pilaGrande - pilaPequena);
+
+        // La pila pequeña ha durado mas
+        } else {
 					horasDeVuelo += pilaGrande;
-					if (pilaPequena - pilaGrande != 0)
-						pilasPequenas.push(pilaPequena - pilaGrande);
+          if (pilaPequena - pilaGrande != 0)
+            //pilasPequenas.push(pilaPequena - pilaGrande);
+            pequenasPendientes.push_back(pilaPequena - pilaGrande);
 				}
 			}
 		}
+
+    // Devolvemos las pilas a la caja
+    for (int i = 0; i < grandesPendientes.size(); i++)
+      pilasGrandes.push(grandesPendientes[i]);
+
+    for (int i = 0; i < pequenasPendientes.size(); i++)
+      pilasPequenas.push(pequenasPendientes[i]);
+
+    // Mostramos la solucion
 		cout << horasDeVuelo << " ";
 	}
 
@@ -73,5 +87,4 @@ int main() {
 	#endif
 
 	return 0;
-}
-*/
+}*/
