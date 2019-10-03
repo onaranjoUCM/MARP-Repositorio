@@ -115,6 +115,8 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClCompile Include="ColocarGuardias.cpp" />
+    <ClCompile Include="GrafoBipartito.cpp" />
     <ClCompile Include="LoQueCuestaSumar.cpp" />
     <ClCompile Include="OrdenandoPacientes.cpp" />
     <ClCompile Include="PajarosEnVuelo.cpp" />
@@ -124,6 +126,10 @@
     <ClCompile Include="VolandoDrones.cpp" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="Grafo.h" />
+    <ClInclude Include="GrafoDirigido.h" />
+    <ClInclude Include="GrafoDirigidoValorado.h" />
+    <ClInclude Include="GrafoValorado.h" />
     <ClInclude Include="PriorityQueue.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
