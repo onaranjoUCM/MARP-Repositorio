@@ -3,14 +3,17 @@ using namespace std;
 #include <iostream>
 #include <fstream>
 #include "Grafo.h"
-
-bool bipartito(Grafo& g, int v, bool colorAnterior, vector<bool>& vis, vector<bool>& color) {
+/*
+bool bipartito(Grafo& g, int v, bool colorAnterior, vector<bool>& vis, vector<bool>& color, int & n1, int & n2) {
 	if (!vis[v]) {
 		vis[v] = true;
 		color[v] = !colorAnterior;
 
+		if (colorAnterior) n1++;
+		else n2++;
+
 		for (int e : g.ady(v)) {
-			if (!bipartito(g, e, color[v], vis, color))
+			if (!bipartito(g, e, color[v], vis, color, n1, n2))
 				return false;
 		}
 
@@ -32,7 +35,7 @@ bool resuelveCaso() {
 	for (int i = 0; i < a; i++) {
 		int a1, a2;
 		cin >> a1 >> a2;
-		grafo.ponArista(a1, a2);
+		grafo.ponArista(a1 - 1, a2 - 1);
 	}
 
 	vector<bool> visitados;
@@ -43,20 +46,24 @@ bool resuelveCaso() {
 	for (int i = 0; i < v; i++)
 		color.push_back(false);
 
+	int min = 0;
 	bool solucion = true;
 	for (int i = 0; i < v; i++) {
 		if (!visitados[i]) {
-			if (!bipartito(grafo, i, false, visitados, color)) {
+			int n1 = 0;
+			int n2 = 0;
+			if (!bipartito(grafo, i, false, visitados, color, n1, n2)) {
 				solucion = false;
 				break;
 			}
+			(n1 < n2) ? min += n1 : min += n2;
 		}
 	}
 
 	if (solucion)
-		cout << "SI" << "\n";
+		cout << min << "\n";
 	else
-		cout << "NO" << "\n";
+		cout << "IMPOSIBLE" << "\n";
 
 	return true;
 }
@@ -75,4 +82,4 @@ int main() {
 #endif
 
 	return 0;
-}
+}*/
