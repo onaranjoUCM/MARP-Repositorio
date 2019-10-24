@@ -10,7 +10,7 @@ using namespace std;
 using namespace std;
 vector<vector<bool>> marked;
 vector<vector<int>> distTo;
-
+/*
 void bfs(vector<vector<string>> const& m, pair<int, int> e) {
 	queue<pair<int, int>> q;
 	distTo[e.first][e.second] = 0;
@@ -116,4 +116,4 @@ int main() {
 #endif
 
 	return 0;
-}
+}*/

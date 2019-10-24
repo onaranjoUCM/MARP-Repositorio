@@ -115,6 +115,7 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClCompile Include="CamionesDeReparto.cpp" />
     <ClCompile Include="ColocarGuardias.cpp" />
     <ClCompile Include="GrafoBipartito.cpp" />
     <ClCompile Include="LasNoticiasVuelan.cpp" />
@@ -122,6 +123,7 @@
     <ClCompile Include="OrdenandoPacientes.cpp" />
     <ClCompile Include="PajarosEnVuelo.cpp" />
     <ClCompile Include="PartiturasOrquesta.cpp" />
+    <ClCompile Include="RatonesEnUnLaberinto.cpp" />
     <ClCompile Include="ReinaDelSuper.cpp" />
     <ClCompile Include="RondaDeLaNoche.cpp" />
     <ClCompile Include="UnidadCuriosaDeMonitorizacion.cpp" />
