@@ -4,40 +4,42 @@
 #include "IndexPQ.h"
 
 using namespace std;
-
+const int INF = 1000000000;
+/*
 class DijkstraSP {
 private:
-	vector<int> distTo;
-	IndexPQ<int> pq;
-	
-	void stress(Arista<int> const& e) {
-		int v = e.uno(), w = e.otro(e.uno());
-		if (distTo[w] < distTo[v] + e.valor()) {
-			distTo[w] = distTo[v] + e.valor();
-			pq.update(w, distTo[w]);
-		}
-	}
+  vector<int> distTo;
+  IndexPQ<int> pq;
+  int a;
+
+  void relax(Arista<int> const& e) {
+    int w = e.uno(), v = e.otro(w);
+    if (distTo[w] > distTo[v] + e.valor() && e.valor() >= a) {
+      distTo[w] = distTo[v] + e.valor();
+      pq.update(w, distTo[w]);
+    }
+  }
 
 public:
-	DijkstraSP(GrafoValorado<int> const& G, int s)
-		: distTo(G.V(), 0), pq(G.V()) {
-		distTo[s] = 0;
-		pq.push(s, 0);
-		while (!pq.empty()) {
-			int v = pq.top().elem;
-			pq.pop();
-			for (auto e : G.ady(v))
-				stress(e);
-		}
-	}
+  DijkstraSP(GrafoValorado<int> const& G, int s, int a_)
+    : distTo(G.V(), INF), pq(G.V()), a(a_) {
+    distTo[s] = 0;
+    pq.push(s, 0);
+    while (!pq.empty()) {
+      int v = pq.top().elem;
+      pq.pop();
+      for (auto e : G.ady(v))
+        relax(e);
+    }
+  }
 
-	bool hayCamino(int v) const {
-		return distTo[v] != 0;
-	}
+  bool hayCamino(int v) const {
+    return distTo[v] != INF;
+  }
 
-	int valor(int v) const {
-		return distTo[v];
-	}
+  int valor(int v) const {
+    return distTo[v];
+  }
 };
 
 bool resuelveCaso() {
@@ -58,9 +60,9 @@ bool resuelveCaso() {
 		int v, w, a;
 		cin >> v >> w >> a;
 
-		DijkstraSP dij(g, w - 1);
+		DijkstraSP dij(g, w - 1, a);
 
-		if (dij.hayCamino(v-1) && dij.valor(v-1) >= a) {
+		if (dij.hayCamino(v-1)) {
 			cout << "SI" << "\n";
 		} else {
 			cout << "NO" << "\n";
@@ -84,4 +86,4 @@ int main() {
 #endif
 
 	return 0;
-}
+}*/

@@ -115,6 +115,7 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClCompile Include="ArchipielagoBicicleta.cpp" />
     <ClCompile Include="CamionesDeReparto.cpp" />
     <ClCompile Include="ColocarGuardias.cpp" />
     <ClCompile Include="GrafoBipartito.cpp" />
