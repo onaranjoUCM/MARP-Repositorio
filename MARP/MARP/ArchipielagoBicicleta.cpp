@@ -5,50 +5,52 @@
 #include "IndexPQ.h"
 
 using namespace std;
+const int INF = 1000000000;
 
-class QuickFindUF {
-  vector<int> id;
+class PrimMST {
+private:
+  vector<Arista<int>> edgeTo; // shortest edge from tree vertex
+  vector<double> distTo; // distTo[w] = edgeTo[w].weight()
+  vector<bool> marked; // true if v on tree
+  IndexPQ<double> pq; // eligible crossing edges
 
 public:
-  QuickFindUF(int n) {
-    id = vector<int>(n);
-    for (int i = 0; i < n; i++)
-      id[i] = i;
+  PrimMST(GrafoValorado<int> G) 
+    : edgeTo(G.V()), distTo(G.V(), INF), marked(G.V(), false), pq(G.V()) {
+    distTo[0] = 0.0;
+    pq.push(0, 0.0); // Initialize pq with 0, weight 0.
+
+    while (!pq.empty()) {
+      visit(G, pq.top().elem); 
+      pq.pop(); // Add closest vertex to tree.
+    }
   }
 
-  int find(int p) {
-    return id[p];
-  }
-
-  void union_(int p, int q) {
-    int pid = id[p];
-    int qid = id[q];
-    for (int i = 0; i < id.size(); i++)
-      if (id[i] == pid) id[i] = qid;
-  }
-};
-
-class KruskalMST {
-  queue<Arista<int>> mst = queue<Arista<int>>();
-
-  KruskalMST(GrafoValorado<int> G) {
-    IndexPQ<Arista<int>> pq = IndexPQ<Arista<int>>(G.E());
-    QuickFindUF uf = QuickFindUF(G.V());
-
-    while (!pq.empty() && mst.size() < G.V() - 1) {
-      Arista<int> e = pq.top(); pq.pop();
-      int v = e.either(), w = e.other(v);
-      if (!uf.find(v, w)) {
-        uf.union_(v, w);
-        mst.push(e);
+  // Add v to tree; update data structures.
+  void visit(GrafoValorado<int> G, int v) { 
+    marked[v] = true;
+    for (Arista<int> e : G.ady(v)) {
+      int w = e.otro(v);
+      if (marked[w]) continue; // v-w is ineligible.
+      if (e.valor() < distTo[w]) { // Edge e is new best connection from tree to w.
+        edgeTo[w] = e;
+        distTo[w] = e.valor();
+        pq.update(w, distTo[w]);
       }
     }
   }
-  public Iterable<Edge> edges()
-  {
-    return mst;
+
+  int valorArbol() {
+    int contador = 0;
+    for (double e : distTo) {
+        contador += e;
+    }
+    if (contador >= INF)
+      return 0;
+    else
+      return contador;
   }
-}
+};
 
 bool resuelveCaso() {
   int i, p;
@@ -62,12 +64,14 @@ bool resuelveCaso() {
     g.ponArista({ v - 1, w - 1, c });
   }
 
-  if (dij.hayCamino(v-1)) {
-    cout << "SI" << "\n";
-  } else {
-    cout << "NO" << "\n";
-  }
-
+  PrimMST prim(g);
+  
+  int v = prim.valorArbol();
+  if (!v)
+    cout << "No hay puentes suficientes" << "\n";
+  else
+    cout << v << "\n";
+  
   return true;
 }
 

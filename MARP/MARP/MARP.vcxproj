@@ -124,6 +124,7 @@
     <ClCompile Include="OrdenandoPacientes.cpp" />
     <ClCompile Include="PajarosEnVuelo.cpp" />
     <ClCompile Include="PartiturasOrquesta.cpp" />
+    <ClCompile Include="Petroleros hundidos.cpp" />
     <ClCompile Include="RatonesEnUnLaberinto.cpp" />
     <ClCompile Include="ReinaDelSuper.cpp" />
     <ClCompile Include="RondaDeLaNoche.cpp" />
