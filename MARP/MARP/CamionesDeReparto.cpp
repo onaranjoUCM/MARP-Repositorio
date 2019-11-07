@@ -4,8 +4,10 @@
 #include "IndexPQ.h"
 
 using namespace std;
-const int INF = 1000000000;
+
 /*
+const int INF = 1000000000;
+
 class DijkstraSP {
 private:
   vector<int> distTo;

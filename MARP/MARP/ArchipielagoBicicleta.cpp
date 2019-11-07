@@ -5,6 +5,8 @@
 #include "IndexPQ.h"
 
 using namespace std;
+
+/*
 const int INF = 1000000000;
 
 class PrimMST {
@@ -89,4 +91,4 @@ int main() {
 #endif
 
   return 0;
-}
+}*/
