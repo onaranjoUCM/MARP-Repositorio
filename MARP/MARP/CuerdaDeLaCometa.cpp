@@ -3,58 +3,35 @@
 #include <vector>
 
 using namespace std;
-
+/*
 int formas;
-int min;
+int numeroMin;
 int costeMin;
 
-void nFormas(vector<pair<int, int>> c, int maxLong, int l, int n) {
+void calcular(vector<pair<int, int>> c, int maxLong, int l, int n, int nOperandos, int coste) {
 	int longitud = l;
 	if (l + c[n].first < maxLong && n < c.size() - 1) {
-		nFormas(c, maxLong, l + c[n].first, n + 1);
-		nFormas(c, maxLong, l, n + 1);
+		calcular(c, maxLong, l + c[n].first, n + 1, nOperandos + 1, coste + c[n].second);
+		calcular(c, maxLong, l, n + 1, nOperandos, coste);
 	} else if (l + c[n].first > maxLong && n < c.size() - 1) {
-		nFormas(c, maxLong, l, n + 1);
+		calcular(c, maxLong, l, n + 1, nOperandos, coste);
 	} else if (l + c[n].first == maxLong) {
+		// Calcula numero de formas de resolverlo
 		formas++;
-		if (n < c.size() - 1)
-			nFormas(c, maxLong, l, n + 1);
-	}
-}
 
-void nMinimo(vector<pair<int, int>> c, int maxLong, int l, int n, int nOperandos) {
-	int longitud = l;
-	if (l + c[n].first < maxLong && n < c.size() - 1) {
-		nMinimo(c, maxLong, l + c[n].first, n + 1, nOperandos + 1);
-		nMinimo(c, maxLong, l, n + 1, nOperandos);
-	}
-	else if (l + c[n].first > maxLong && n < c.size() - 1) {
-		nMinimo(c, maxLong, l, n + 1, nOperandos);
-	}
-	else if (l + c[n].first == maxLong) {
-		if (nOperandos + 1 < min)
-			min = nOperandos + 1;
-		
-		if (n < c.size() - 1)
-			nMinimo(c, maxLong, l, n + 1, nOperandos);
-	}
-}
+		// Calcula el numero minimo de cordeles usados
+		if (nOperandos + 1 < numeroMin)
+			numeroMin = nOperandos + 1;
 
-void costeMinimo(vector<pair<int, int>> c, int maxLong, int l, int n, int nOperandos) {
-	int longitud = l;
-	if (l + c[n].first < maxLong && n < c.size() - 1) {
-		nMinimo(c, maxLong, l + c[n].first, n + 1, nOperandos + 1);
-		nMinimo(c, maxLong, l, n + 1, nOperandos);
-	}
-	else if (l + c[n].first > maxLong && n < c.size() - 1) {
-		nMinimo(c, maxLong, l, n + 1, nOperandos);
-	}
-	else if (l + c[n].first == maxLong) {
-		if (nOperandos + 1 < costeMin)
-			costeMin = nOperandos + 1;
+		// Calcula el coste minimo
+		if (coste + c[n].second < costeMin) {
+			costeMin = coste + c[n].second;
+		}
 
+		// Prueba los siguientes casos
 		if (n < c.size() - 1)
-			nMinimo(c, maxLong, l, n + 1, nOperandos);
+			calcular(c, maxLong, l, n + 1, nOperandos, coste);
+
 	}
 }
 
@@ -71,14 +48,13 @@ bool resuelveCaso() {
   }
 
   formas = 0;
-  min = n;
+  numeroMin = n;
   costeMin = 100000000;
-  nFormas(cordeles, l, 0, 0);
+  calcular(cordeles, l, 0, 0, 0, 0);
+
   if (formas) {
-	  nMinimo(cordeles, l, 0, 0, 0);
-	  costeMinimo(cordeles, l, 0, 0, costeMin);
 	  cout << "SI " << formas
-	  << " " << min
+	  << " " << numeroMin
 	  << " " << costeMin
 	  << "\n";
   } else {
@@ -102,4 +78,4 @@ int main() {
 #endif
 
   return 0;
-}
+}*/
