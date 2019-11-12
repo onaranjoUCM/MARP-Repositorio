@@ -1,38 +1,62 @@
 #include <iostream>
 #include <fstream>
 #include <vector>
+#include <algorithm>
 
 using namespace std;
-/*
-int formas;
-int numeroMin;
-int costeMin;
+int INF = 1000000000;
 
-void calcular(vector<pair<int, int>> c, int maxLong, int l, int n, int nOperandos, int coste) {
-	int longitud = l;
-	if (l + c[n].first < maxLong && n < c.size() - 1) {
-		calcular(c, maxLong, l + c[n].first, n + 1, nOperandos + 1, coste + c[n].second);
-		calcular(c, maxLong, l, n + 1, nOperandos, coste);
-	} else if (l + c[n].first > maxLong && n < c.size() - 1) {
-		calcular(c, maxLong, l, n + 1, nOperandos, coste);
-	} else if (l + c[n].first == maxLong) {
-		// Calcula numero de formas de resolverlo
-		formas++;
+int maneras(vector<pair<int, int>> const& C, int L) {
+  int n = C.size() - 1;
+  vector<vector<int>> cordeles(n + 1, vector<int>(L + 1, 0));
+  cordeles[0][0] = 0;
 
-		// Calcula el numero minimo de cordeles usados
-		if (nOperandos + 1 < numeroMin)
-			numeroMin = nOperandos + 1;
+  for (int i = 1; i <= n; ++i) {
+    cordeles[i][0] = 0;
+    for (int j = 1; j <= L; ++j) {
+      if (C[i].first > j)
+        cordeles[i][j] = cordeles[i - 1][j];
+      else if (C[i].first < j)
+        cordeles[i][j] = max(cordeles[i - 1][j], cordeles[i - 1][j - C[i].first]);
+      else
+        cordeles[i][j]++;
+    }
+  }
+  return cordeles[n][L];
+}
 
-		// Calcula el coste minimo
-		if (coste + c[n].second < costeMin) {
-			costeMin = coste + c[n].second;
-		}
+int minimoNumero(vector<pair<int, int>> const& C, int L) {
+  int n = C.size() - 1;
+  vector<vector<int>> cordeles(n + 1, vector<int>(L + 1, INF));
+  cordeles[0][0] = 0;
+  
+  for (int i = 1; i <= n; ++i) {
+    cordeles[i][0] = 0;
+    for (int j = 1; j <= L; ++j) {
+      if (C[i].first > j)
+        cordeles[i][j] = cordeles[i - 1][j];
+      else
+        cordeles[i][j] = min(cordeles[i - 1][j], cordeles[i][j - C[i].first] + 1);
+    }
+  }
+  return cordeles[n][L];
+}
 
-		// Prueba los siguientes casos
-		if (n < c.size() - 1)
-			calcular(c, maxLong, l, n + 1, nOperandos, coste);
+int minimoCoste(vector<pair<int, int>> const& C, int L) {
+  int n = C.size() - 1;
+  vector<vector<int>> cordeles(n + 1, vector<int>(L + 1, INF));
+  cordeles[0][0] = 0;
 
-	}
+  for (int i = 1; i <= n; ++i) {
+    cordeles[i][0] = 0;
+    for (int j = 1; j <= L; ++j) {
+      if (C[i].first > j)
+        cordeles[i][j] = cordeles[i - 1][j];
+      else
+        cordeles[i][j] = min(cordeles[i - 1][j], cordeles[i][j - C[i].first] + C[i].second);
+    }
+  }
+  return cordeles[n][L];
 }
 
 bool resuelveCaso() {
@@ -42,24 +66,18 @@ bool resuelveCaso() {
 
   vector<pair<int, int>> cordeles;
   for (int i = 0; i < n; i++) {
-	int l, c;
-	cin >> l >> c;
-	cordeles.push_back({ l, c });
+	  int l, c;
+	  cin >> l >> c;
+	  cordeles.push_back({ l, c });
   }
 
-  formas = 0;
-  numeroMin = n;
-  costeMin = 100000000;
-  calcular(cordeles, l, 0, 0, 0, 0);
-
-  if (formas) {
-	  cout << "SI " << formas
-	  << " " << numeroMin
-	  << " " << costeMin
-	  << "\n";
-  } else {
-	  cout << "NO" << "\n";
-  }
+  int m = maneras(cordeles, l);
+  if (m != 0)
+    cout << "SI " << m << " " 
+    << minimoNumero(cordeles, l) << " " 
+    << minimoCoste(cordeles, l) << "\n";
+  else
+    cout << "NO" << "\n";
 
   return true;
 }
@@ -78,4 +96,4 @@ int main() {
 #endif
 
   return 0;
-}*/
+}

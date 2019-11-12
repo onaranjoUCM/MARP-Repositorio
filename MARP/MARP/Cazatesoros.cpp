@@ -3,7 +3,7 @@
 #include <vector>
 
 using namespace std;
-
+/*
 int numeroCofres;
 int oroMax;
 
@@ -57,4 +57,4 @@ int main() {
 #endif
 
 	return 0;
-}
+}*/
