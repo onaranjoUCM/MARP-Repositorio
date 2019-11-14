@@ -1,60 +1,89 @@
 #include <iostream>
 #include <fstream>
 #include <vector>
+#include <algorithm>
 
 using namespace std;
-/*
-int numeroCofres;
-int oroMax;
 
-void calcular(vector<pair<int, int>> c, int tiempoRestante, int n, int nCofres, int oro) {
-	// Si no nos quedamos sin tiempo, calculamos el beneficio y añadimos el cofre
-	if (tiempoRestante - (c[n].first * 3) >= 0) {
-		if (oro + c[n].second > oroMax) {
-			oroMax = oro + c[n].second;
-			numeroCofres = nCofres + 1;
+void maximoOro(vector<int> const & P, vector<int> const & V, 
+	int T, int & valor, vector<bool> & cuales) {
+	
+	int n = P.size() - 1;
+	vector<vector<int>> cofres(n + 1, vector<int>(T + 1, 0));
+	for (int i = 1; i <= n; ++i) {
+		for (int j = 1; j <= T; ++j) {
+			if (3*P[i] > j)
+				cofres[i][j] = cofres[i - 1][j];
+			else
+				cofres[i][j] = max(cofres[i - 1][j], cofres[i - 1][j - 3*P[i]] + V[i]);
 		}
-
-		if(n < c.size() - 1)
-			calcular(c, tiempoRestante - (c[n].first * 3), n + 1, nCofres + 1, oro + c[n].second);
 	}
+	valor = cofres[n][T];
 
-	// Prueba el resto de casos sin este cofre
-	if (n < c.size() - 1)
-		calcular(c, tiempoRestante, n + 1, nCofres, oro);
+	// cálculo de los objetos
+	int resto = T;
+	for (int i = n; i >= 1; --i) {
+		if (cofres[i][resto] == cofres[i - 1][resto]) {
+			// no cogemos objeto i
+			cuales[i] = false;
+		}
+		else { // sí cogemos objeto i
+			cuales[i] = true;
+			resto = resto - 3*P[i];
+		}
+	}
 }
 
 bool resuelveCaso() {
-	int t, n;
-	cin >> t >> n;
-	if (!cin) return false;
+  int t, n;
+  cin >> t >> n;
+  if (!cin) return false;
 
-	vector<pair<int, int>> cofres;
-	for (int i = 0; i < n; i++) {
-		int p, c;
-		cin >> p >> c;
-		cofres.push_back({ p, c });
-	}
-	oroMax = numeroCofres = 0;
-	calcular(cofres, t, 0, 0, 0);
-	cout << oroMax << "\n" << numeroCofres << "\n";
-	cout << "----" << "\n";
+  // Lee datos
+  vector<int> profundidades;
+  vector<int> cantidadesOro;
+  for (int i = 0; i < n; i++) {
+	  int p, o;
+	  cin >> p >> o;
+	  profundidades.push_back(p);
+	  cantidadesOro.push_back(o);
+  }
+  
+  // Calcula la solucion
+  int v = 0;
+  vector<bool> c(n, false);
+  maximoOro(profundidades, cantidadesOro, t, v, c);
 
-	return true;
+  // Escribe la solucion
+  cout << v << "\n";
+  int contador = 0;
+  for (int i = 0; i < n; i++)
+	  if (c[i]) contador++;
+  cout << contador << "\n";
+
+  for (int i = 0; i < n; i++) {
+	  if (c[i]) {
+		  cout << profundidades[i] << " ";
+		  cout << cantidadesOro[i] << "\n";
+	  }
+  }
+  cout << "----" << "\n";
+  
+  return true;
 }
 
 int main() {
 #ifndef DOMJUDGE
-	std::ifstream in("casos.txt");
-	auto cinbuf = std::cin.rdbuf(in.rdbuf());
+  std::ifstream in("casos.txt");
+  auto cinbuf = std::cin.rdbuf(in.rdbuf());
 #endif
 
-	while (resuelveCaso());
+  while (resuelveCaso());
 
 #ifndef DOMJUDGE
-	std::cin.rdbuf(cinbuf);
-	system("PAUSE");
+  std::cin.rdbuf(cinbuf);
+  system("PAUSE");
 #endif
 
-	return 0;
-}*/
+  return 0;
+}
