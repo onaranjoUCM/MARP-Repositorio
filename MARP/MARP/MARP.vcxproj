@@ -119,6 +119,7 @@
     <ClCompile Include="CamionesDeReparto.cpp" />
     <ClCompile Include="Cazatesoros.cpp" />
     <ClCompile Include="ColocarGuardias.cpp" />
+    <ClCompile Include="ConstruyendoDianas.cpp" />
     <ClCompile Include="CuerdaDeLaCometa.cpp" />
     <ClCompile Include="GrafoBipartito.cpp" />
     <ClCompile Include="LasNoticiasVuelan.cpp" />
