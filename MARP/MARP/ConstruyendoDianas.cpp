@@ -4,6 +4,7 @@
 #include <algorithm>
 
 using namespace std;
+
 int INF = 1000000000;
 
 long long int posible(vector<int> const& P, int V) {
@@ -26,7 +27,7 @@ long long int posible(vector<int> const& P, int V) {
   return puntuaciones[n][V];
 }
 
-int minimoNumero(vector<int> const& P, int V, vector<bool>& cuales) {
+int minimoNumero(vector<int> const& P, int V, vector<int>& cuantas) {
   int n = P.size() - 1;
   vector<vector<int>> puntuaciones(n + 1, vector<int>(V + 1, INF));
   puntuaciones[0][0] = 0;
@@ -41,7 +42,16 @@ int minimoNumero(vector<int> const& P, int V, vector<bool>& cuales) {
           min(puntuaciones[i - 1][j], puntuaciones[i - 1][j - P[i]] + 1));
     }
   }
-
+  
+  int i = n; int j = V;
+  while (j > 0 && i > 0) {
+    if (P[i] <= j && puntuaciones[i][j] != puntuaciones[i - 1][j]) {
+      ++cuantas[i];
+      j = j - P[i];
+    } else
+      --i;
+  }
+  
   return puntuaciones[n][V];
 }
 
@@ -59,11 +69,13 @@ bool resuelveCaso() {
   }
 
   if (posible(puntuaciones, v)) {
-    vector<bool> cuales(n + 1, false);
-    cout << minimoNumero(puntuaciones, v, cuales) << ": ";
+    vector<int> cuantas(n + 1, 0);
+    cout << minimoNumero(puntuaciones, v, cuantas) << ": ";
     for (int i = 0; i <= n; i++) {
-      if (cuales[i]) {
-        cout << puntuaciones[i] << " ";
+      if (cuantas[i]) {
+        for (int j = 0; j < cuantas[i]; j++) {
+          cout << puntuaciones[i] << " ";
+        }
       }
     }
     cout << "\n";
