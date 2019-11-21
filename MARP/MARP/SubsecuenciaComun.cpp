@@ -7,20 +7,16 @@
 using namespace std;
 /*
 int subsecuencia(string A, string B) {
-  int n = P.size() - 1;
-  int size = max(A.length(), B.length());
-  vector<vector<int>> subsec(n + 1, vector<int>(size + 1, 0));
-  // rellenar la matriz
-  for (int i = 1; i <= n; ++i) {
-    for (int j = 1; j <= T; ++j) {
-      if (3*P[i] > j)
-        subsec[i][j] = subsec[i - 1][j];
-      else
-        subsec[i][j] = max(cofres[i - 1][j], cofres[i - 1][j - 3*P[i]] + V[i]);
+  vector<vector<int>> subsec(A.length() + 1, vector<int>(B.length() + 1, 0));
+  for (int i = 1; i <= A.length(); i++) {
+    for (int j = 1; j <= B.length(); j++) {
+	  if (A[i] == B[j])
+		subsec[i][j] = subsec[i - 1][j - 1] + 1;
+	  else
+        subsec[i][j] = max(subsec[i - 1][j], subsec[i][j - 1]);
     }
   }
-  valor = cofres[n][T];
-  return 0;
+  return subsec[A.length()][B.length()] - 1;
 }
 
 bool resuelveCaso() {
@@ -28,6 +24,8 @@ bool resuelveCaso() {
   cin >> A >> B;
   if (!cin) return false;
 
+  A = " " + A;
+  B = " " + B;
   cout << subsecuencia(A, B) << "\n";
 
   return true;

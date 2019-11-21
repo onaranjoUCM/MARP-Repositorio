@@ -7,7 +7,7 @@ using namespace std;
 
 int INF = 1000000000;
 
-long long int posible(vector<int> const& P, int V) {
+bool posible(vector<int> const& P, int V) {
   int n = P.size() - 1;
   vector<vector<bool>> puntuaciones(n + 1, vector<bool>(V + 1, false));
   puntuaciones[0][0] = true;
