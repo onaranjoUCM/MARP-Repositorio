@@ -4,7 +4,7 @@
 #include <algorithm>
 
 using namespace std;
-
+/*
 int INF = 1000000000;
 
 bool posible(vector<int> const& P, int V) {
@@ -99,4 +99,4 @@ int main() {
 #endif
 
   return 0;
-}
+}*/
