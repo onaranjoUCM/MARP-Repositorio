@@ -19,7 +19,7 @@ using namespace std;
 	// de puntos es menor si la puntuación rival es menor,
 	// o mayor si la puntuación rival es mayor, pero las
 	// derrotas las ignoramos.
-
+/*
 int diferencia(vector<int> puntosRivales, vector<int> puntosBroncos) {
 	int sumaDiferencias = 0;
 	for (int i = 0; i < puntosRivales.size(); i++) {
@@ -69,4 +69,4 @@ int main() {
 #endif
 
 	return 0;
-}
+}*/

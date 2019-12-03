@@ -22,32 +22,32 @@
     <VCProjectVersion>15.0</VCProjectVersion>
     <ProjectGuid>{43F33C08-4ED4-4121-92F9-42AE8677957B}</ProjectGuid>
     <RootNamespace>MARP</RootNamespace>
-    <WindowsTargetPlatformVersion>10.0</WindowsTargetPlatformVersion>
+    <WindowsTargetPlatformVersion>10.0.17763.0</WindowsTargetPlatformVersion>
   </PropertyGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.Default.props" />
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'" Label="Configuration">
     <ConfigurationType>Application</ConfigurationType>
     <UseDebugLibraries>true</UseDebugLibraries>
-    <PlatformToolset>v142</PlatformToolset>
+    <PlatformToolset>v141</PlatformToolset>
     <CharacterSet>MultiByte</CharacterSet>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'" Label="Configuration">
     <ConfigurationType>Application</ConfigurationType>
     <UseDebugLibraries>false</UseDebugLibraries>
-    <PlatformToolset>v142</PlatformToolset>
+    <PlatformToolset>v141</PlatformToolset>
     <WholeProgramOptimization>true</WholeProgramOptimization>
     <CharacterSet>MultiByte</CharacterSet>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'" Label="Configuration">
     <ConfigurationType>Application</ConfigurationType>
     <UseDebugLibraries>true</UseDebugLibraries>
-    <PlatformToolset>v142</PlatformToolset>
+    <PlatformToolset>v141</PlatformToolset>
     <CharacterSet>MultiByte</CharacterSet>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'" Label="Configuration">
     <ConfigurationType>Application</ConfigurationType>
     <UseDebugLibraries>false</UseDebugLibraries>
-    <PlatformToolset>v142</PlatformToolset>
+    <PlatformToolset>v141</PlatformToolset>
     <WholeProgramOptimization>true</WholeProgramOptimization>
     <CharacterSet>MultiByte</CharacterSet>
   </PropertyGroup>
@@ -119,6 +119,7 @@
     <ClCompile Include="ArchipielagoBicicleta.cpp" />
     <ClCompile Include="BroncosDeBoston.cpp" />
     <ClCompile Include="CamionesDeReparto.cpp" />
+    <ClCompile Include="CarrerasDeCoches.cpp" />
     <ClCompile Include="Cazatesoros.cpp" />
     <ClCompile Include="ColocarGuardias.cpp" />
     <ClCompile Include="ConstruyendoDianas.cpp" />
@@ -131,6 +132,7 @@
     <ClCompile Include="PajarosEnVuelo.cpp" />
     <ClCompile Include="PartiturasOrquesta.cpp" />
     <ClCompile Include="Petroleros hundidos.cpp" />
+    <ClCompile Include="PrimeraLineaDePlaya.cpp" />
     <ClCompile Include="RatonesEnUnLaberinto.cpp" />
     <ClCompile Include="ReinaDelSuper.cpp" />
     <ClCompile Include="RondaDeLaNoche.cpp" />
