@@ -128,6 +128,7 @@
     <ClCompile Include="GrafoBipartito.cpp" />
     <ClCompile Include="LasNoticiasVuelan.cpp" />
     <ClCompile Include="LoQueCuestaSumar.cpp" />
+    <ClCompile Include="MaratonCineTerror.cpp" />
     <ClCompile Include="OrdenandoPacientes.cpp" />
     <ClCompile Include="PajarosEnVuelo.cpp" />
     <ClCompile Include="PartiturasOrquesta.cpp" />

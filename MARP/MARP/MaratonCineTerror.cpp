@@ -9,10 +9,10 @@ using namespace std;
 
 
 // DEMOSTRACIÓN
-/*
-struct Edificio {
-  int ini;
-  int fin;
+
+struct Pelicula {
+  int hora;
+  int duracion;
 };
 
 int numPasadizos(vector<Edificio>& edificios) {
@@ -21,7 +21,7 @@ int numPasadizos(vector<Edificio>& edificios) {
   for (int i = 0; i < edificios.size(); i++) {
 
   }
-  
+
   return p;
 }
 
@@ -57,4 +57,4 @@ int main() {
 #endif
 
   return 0;
-}*/
+}
